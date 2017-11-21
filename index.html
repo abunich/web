@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body ng-cloak>
+  <section>
+    <article>
+      <h1>TASK 1</h1>
+    </article>
+    <div>
+      <form id="form">
+        <input ng-model="inputModel" id="input" name="input" type="text" form="form" task-dir>
+        <input id="submit" name="password" type="submit" form="form" on-click="click()">
+        <br>
+        <div id="inputText" style="color:maroon"></div>
+      </form>
+    </div>
+  </section>
+  <section>
+    <article>
+      <h1>TASK 2</h1>
+    </article> 
+    <p>Можно использовать $broadcast и $emit или же создать сервис, который будет инжектиться к обоим контроллерам и будет хранить нужный объект</p>
+  </section>
+  <section
+    ng-controller="task3Ctrl as task3">
+    <article>
+      <h1>TASK 3</h1>
+    </article> 
+    <button ng-click="task3.actualArrayFunc();" style="cursor:pointer;">Посмотреть актуальные данные</button>
+    <p ng-if="task3.actualArray">Актуальные данные: {{task3.array}}</p>
+    <br/>
+    <label for="textareaAdd">Напишите данные, которые хотите добавить в массив</label><br/>
+    <textarea id="textareaAdd"></textarea>
+    <div ng-if="task3.textareaError">Вы пытаетесь отправить пустую строку</div>
+    <br/>
+    <button ng-click="task3.addArray('textareaAdd')" style="cursor:pointer;">Добавить данные</button>
+    <br/>
+    <label for="textareaDel">Напишите индекс данных, которые хотите удалить</label><br/>
+    <textarea id="textareaDel"></textarea>
+    <!--<div ng-if="task3.textareaDelError">Вы пытаетесь отправить пустую строку</div>-->
+    <br/>
+    <button ng-click="task3.deleteArray('textareaDel')" style="cursor:pointer;">Удалить данные</button>
+    <button ng-click="task3.deleteArray('textareaAllDel')" style="cursor:pointer;">Удалить все данные</button>
+  </section>
+  <section
+    ng-controller="task4Ctrl as task4">
+    <article>
+      <h1>TASK 4</h1>
+    </article> 
+      <h2>Sorting array:</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Id</th>
+      </tr>
+      <tr ng-repeat="array in task4.array | orderBy:'-id'">
+        <td>{{array.name}}</td>
+        <td>{{array.id}}</td>
+      </tr>
+    </table>
+      <h2>Sorting array(Javascript):</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Id</th>
+      </tr>
+      <tr ng-repeat="sortArray in task4.sortArray">
+        <td>{{sortArray.name}}</td>
+        <td>{{sortArray.id}}</td>
+      </tr>
+    </table>
+  </section>
+  <section
+    ng-controller="task5Ctrl as task5">
+    <article>
+      <h1>TASK 5</h1>
+      <p>Element with id-12 = {{ task5.array | filter : {'id':12} }}</p>
+      <p>Element with id-12 (JavaScript) = {{ task5.sortArray }}</p>
+    </article> 
+        
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/task1/task.factory.js"></script>
+  <script src="js/task1/task.controller.js"></script>
+  <script src="js/task3/task3.factory.js"></script>
+  <script src="js/task3/task3.controller.js"></script>
+  <script src="js/task4/task4.factory.js"></script>
+  <script src="js/task4/task4.controller.js"></script>
+  <script src="js/task5/task5.factory.js"></script>
+  <script src="js/task5/task5.controller.js"></script>
+</body>
+</html>
